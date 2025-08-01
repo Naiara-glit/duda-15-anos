@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Duda 15 anos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-image: url('ndv02.png'); /* Fundo */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: #b47a17;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 150px auto;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            background-color: #b28c8a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            width: 100%;
+            font-family: 'Montserrat', sans-serif;
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: white;
+            color: #b47a17;
+            border: 2px solid #b47a17;
+            border-radius: 8px;
+            padding: 8px 16px;
+            margin-top: 12px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #b47a17;
+            color: white;
+        }
+
+        .success-message {
+            color: green;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .img-top {
+            width: 100%;
+            max-width: 200px;
+            margin: 0 auto 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="ndv.png" alt="Logo Duda 15 anos" class="img-top">
+        <h1>Você está convidado!</h1>
+        <p><em>Esperamos você para celebrar esse momento especial!</em></p>
+
+        <form id="rsvpForm">
+            <label for="nameInput">Confirme sua presença:</label><br>
+            <input type="text" id="nameInput" name="Nome" placeholder="Digite seu nome" required><br>
+            <button type="submit">Confirmar</button>
+        </form>
+
+        <div class="success-message" id="successMessage" style="display: none;">
+            Presença confirmada! 🎉
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('rsvpForm');
+        const successMessage = document.getElementById('successMessage');
+
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const name = document.getElementById('nameInput').value;
+
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzW2ucw-HCHYwpR2Qfxa0-DooDr3gEMd6oOboOKGAwYmqdh_BX860038Tg7vzRucqGF/exec';
+
+            try {
+                await fetch(scriptURL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams({ Nome: name })
+                });
+
+                successMessage.style.display = 'block';
+                form.reset();
+            } catch (error) {
+                alert('Erro ao confirmar. Tente novamente.');
+                console.error('Erro:', error);
+            }
+        });
+    </script>
+</body>
+</html>

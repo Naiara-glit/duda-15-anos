@@ -96,13 +96,13 @@
             event.preventDefault();
             const name = document.getElementById('nameInput').value;
 
-            // URL do Web App com a função de gravação de dados na planilha
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbxsrdNrSTZ9GgSex0nM5lg-gHDKnruKsswevhz6JEsEBOdntFFTWEAXgLpJ-9f-2H9j/exec';
+            // Novo URL do Web App
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzcSb7JQZAUx3f5Ulwl_nuGb31XueBH-2lzvXnU6lqEANRaw-kTd4IA_RMtaWaDJOLI/exec';
 
             try {
                 await fetch(scriptURL, {
                     method: 'POST',
-                    mode: 'no-cors', // Use 'no-cors' para evitar bloqueios, mas sem verificação de resposta
+                    mode: 'no-cors', // Se necessário, remova o 'no-cors' para depurar
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
                     },

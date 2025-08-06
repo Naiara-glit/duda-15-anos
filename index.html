@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -97,7 +96,8 @@
             event.preventDefault();
             const name = document.getElementById('nameInput').value;
 
-            const scriptURL = 'https://script.google.com/u/0/home/projects/12cDeZcljDfNfdcfOWb5lpgnUkFv3SPzMiTPA_OFyFuzIiewj-WxSrPA4/edit?pli=1';
+            // ✅ URL correta do Web App
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzeF2nr1XjXGyKizaad47AR3cq-xmF17cvt9n7n1T1PMvifHI4VThePfcTw4PMvyaDy/exec';
 
             try {
                 await fetch(scriptURL, {
